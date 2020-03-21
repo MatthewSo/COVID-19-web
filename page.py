@@ -270,14 +270,11 @@ def updates():
     return render_template('UpdatesTemplate.html')
 
 
-@app.route("/dashboard")
-def dashboard():
-    return render_template("SoonTemplate.html")
-
 @app.route("/dashboardtemplate")
 def dashboardtemplate():
     return render_template("DashboardTemplate.html")
 
+@app.route("/dashboard")
 @app.route("/experiment")
 def experimental():
     return render_template('ExperimentTemplate.html')
