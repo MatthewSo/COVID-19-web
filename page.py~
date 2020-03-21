@@ -1,0 +1,28 @@
+from flask import Flask, render_template
+app = Flask(__name__)
+import string
+import random
+
+posts = [
+    {
+        'author': 'Matthew So',
+        'title': 'Content',
+        'date': 'Today'
+        }
+
+]
+
+
+for i in range(30):
+    author = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
+    title = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
+    date = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
+    posts.add({'author': author, 'title':title, 'date':date})
+
+@app.route("/")
+def hello():
+    return render_template('home.html', posts=posts)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    

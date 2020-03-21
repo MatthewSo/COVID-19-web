@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  >
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+    function videoChange(sel){
+      document.getElementById("projectionVideo").src = "./static/" + sel.options[sel.selectedIndex].value;
+    }
+</script>
+
+<head >
+  <h2 style="text-align:center;">Scenario Simulations</h2>
+  <label for="videos">Projection:</label>
+    <select id="videos" onchange="videoChange(this)"0>
+        <option value="nointervention.mp4">No Intervention</option>
+        <option value="5%mobility.mp4">5% Mobility</option>
+        <option value="50%transmissibility.mp4">50% Transmissibility</option>
+        <option value="75%transmissibility.mp4">75% Transmissibility</option>
+      </select>
+</head>
+<body>
+    <article style="text-align:center;">
+        <source src="./static/nointervention.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </article>
+</body>
+</html>

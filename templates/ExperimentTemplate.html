@@ -1,0 +1,64 @@
+{% extends "MenuTemplate.html" %}
+{% block content %}
+
+
+<section class="engine"><a href="https://mobirise.info/g">how to build a site</a></section><section class="header1 cid-rT9FvFwykj mbr-parallax-background" id="header16-b">
+
+    
+    
+
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(7, 59, 76);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10 align-center">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Covid-19 Forecast Dashboard</h1>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="application/javascript">
+    function resizeIFrameToFitContent( iFrame ) {
+
+        iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+        iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+    }
+    
+    window.addEventListener('DOMContentLoaded', function(e) {
+    
+        var iFrame = document.getElementById( 'dashBoardFrame' );
+        resizeIFrameToFitContent( iFrame );
+    
+        // or, to resize all iframes:
+        var iframes = document.querySelectorAll("iframe");
+        for( var i = 0; i < iframes.length; i++) {
+            resizeIFrameToFitContent( iframes[i] );
+        }
+    } );
+    
+    </script>
+    
+
+    
+
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+
+<body>
+        <!---<iframe id="dashBoardFrame" scrolling="no" style="border:none;" seamless="seamless" src="/dashboardtemplate" height ="auto" width="100%"></iframe>-->
+        <iframe src="/dashboardtemplate" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+</body>
+
+{% endblock %}
