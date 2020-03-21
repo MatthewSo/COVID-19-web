@@ -10,7 +10,7 @@
 <head >
   <h2 style="text-align:center;">Scenario Simulations</h2>
   <label for="videos">Projection:</label>
-    <select id="videos" onchange="videoChange(this)"0>
+    <select id="videos" onchange="videoChange(this)">
         <option value="nointervention.mp4">No Intervention</option>
         <option value="5%mobility.mp4">5% Mobility</option>
         <option value="50%transmissibility.mp4">50% Transmissibility</option>
@@ -19,8 +19,10 @@
 </head>
 <body>
     <article style="text-align:center;">
+      <video controls>
         <source src="./static/nointervention.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+        Your browser does not support the video tag.
+        </video>
     </article>
 </body>
 </html>
