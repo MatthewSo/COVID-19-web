@@ -134,7 +134,18 @@ def update_prediction_data():
     var['mailman_14_day_doc_total'] = df['Day14'].sum()
 
 def write_counter():
-    string="<!DOCTYPE html> <html><body><h1>Confirmed Cases:</h1><h1 style=\"color:red\">"+str(var["csse_total_confirmed"])+"</h1><h1>Confirmed US Cases:</h1><h1 style=\"color:red\">"+str(var["csse_us_confirmed"])+"</h1><h3>Last Updated on " + var["csse_updated"] + "</h3><h1>14 Day Predicted US Cases:</h1><h1><span style=\"color:red\">"+ str(var["mailman_14_day_doc_total"])+"</span> by <span style=\"color:green\">"+ str(var["mailman_14_day_date"])+"</span></h1>"
+    string="<!DOCTYPE html> <html><body>"
+    string = string + '''  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/static/updateAssets/tether/tether.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
+  <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">'''
+  
+    string = string + "<h1>Confirmed Cases:</h1><h1 style=\"color:red\">"+str(var["csse_total_confirmed"])+"</h1><h1>Confirmed US Cases:</h1><h1 style=\"color:red\">"+str(var["csse_us_confirmed"])+"</h1><h3>Last Updated on " + var["csse_updated"] + "</h3><h1>14 Day Predicted US Cases:</h1><h1><span style=\"color:red\">"+ str(var["mailman_14_day_doc_total"])+"</span> by <span style=\"color:green\">"+ str(var["mailman_14_day_date"])+"</span></h1>"
     
     string= string + "</body></html>"
     text_file = open("templates/counters.html", "w+")
