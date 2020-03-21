@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import plotly
 import plotly.graph_objs as go
 import pandas as pd
@@ -10,6 +10,8 @@ import plotly.io as pio
 import git
 import os
 import glob
+import pickle
+from datetime import date
 
 import string
 import random
@@ -18,6 +20,13 @@ import random
 mailman_undoc_predictions = "county_undoc.csv"
 mailman_doc_predictions = "county_doc.csv"
 csse_daily_reports_folder = "COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"
+blog_file = "blog.pkl"
+
+blog_user="miso"
+blog_pass='-905124903459320104'
+
+
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -27,10 +36,13 @@ var = {
     'csse_total_recovered':0,
     'csse_updated':"0",
     'csse_daily_reports_df':[],
+    'csse_us_confirmed':0,
     'mailman_14_day_undoc_total':0,
     'mailman_14_day_doc_total':0,
-    'mailman_14_day_date':"Date Here"
+    'mailman_14_day_date':"04-02-2020"
 }
+
+posts=[]
 
 def forecast_14_day():
         response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
@@ -112,6 +124,8 @@ def update_csse_data():
     var['csse_total_recovered'] = csse_daily_reports_df['Recovered'].sum()
     var['csse_updated'] =  csse_daily_report_latest_date
     var['csse_daily_reports_df'] = csse_daily_reports_df
+    var['csse_us_confirmed'] = csse_daily_reports_df.loc[csse_daily_reports_df['Country/Region'] == 'US', 'Confirmed'].sum()
+    print (var['csse_us_confirmed'])
 
 def update_prediction_data():
     df = pd.read_csv(mailman_undoc_predictions,  dtype={"FIPS": str})
@@ -120,42 +134,127 @@ def update_prediction_data():
     var['mailman_14_day_doc_total'] = df['Day14'].sum()
 
 def write_counter():
-    string="<!DOCTYPE html> <html><body><h1>Confirmed Cases:</h1><h1 style=\"color:red\">"+str(var["csse_total_confirmed"])+"</h1><h3>Last Updated on " + var["csse_updated"] + "</h3><h1>14 Day Predicted US Cases:</h1><h1><span style=\"color:red\">"+ str(var["mailman_14_day_doc_total"])+"</span> by <span style=\"color:green\">"+ str(var["mailman_14_day_date"])+"</span></h1>"
+    string="<!DOCTYPE html> <html><body><h1>Confirmed Cases:</h1><h1 style=\"color:red\">"+str(var["csse_total_confirmed"])+"</h1><h1>Confirmed US Cases:</h1><h1 style=\"color:red\">"+str(var["csse_us_confirmed"])+"</h1><h3>Last Updated on " + var["csse_updated"] + "</h3><h1>14 Day Predicted US Cases:</h1><h1><span style=\"color:red\">"+ str(var["mailman_14_day_doc_total"])+"</span> by <span style=\"color:green\">"+ str(var["mailman_14_day_date"])+"</span></h1>"
     
     string= string + "</body></html>"
     text_file = open("templates/counters.html", "w+")
     text_file.write(string)
     text_file.close()
 
+def save_blog(posts):
+    with open(blog_file, 'wb') as f:
+        pickle.dump(posts, f, pickle.HIGHEST_PROTOCOL)
+
+def load_blog():
+    with open(blog_file, 'rb') as f:
+        return pickle.load(f)
+
+def add_blog_post(author, title, content, date):
+    posts_temp = load_blog()
+    posts_temp.insert(0,{'author':author, 'title':title,'content':content,'date':date})
+    save_blog(posts_temp)
+
+def delete_blog_post(title):
+    posts_temp = load_blog()
+    ret = [i for i in posts_temp if not (i['title'] == title)] 
+    save_blog(ret)
+
+def load_posts():
+    global posts 
+    posts = load_blog()
+    print(posts)
+
+def generate_UpdatesTemplate():
+    page = '''{% extends "MenuTemplate.html" %}
+    {% block content %}
+
+    <section class="engine"><a href="https://mobirise.info/g">how to build a site</a></section><section class="header1 cid-rT9FvFwykj mbr-parallax-background" id="header16-b">
+
+    
+
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(7, 59, 76);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10 align-center">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Mailman COVID-19 Updates</h1>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+
+    </section>'''
+
+    i = 0
+    for post in load_blog():
+        i=i+1
+        if i % 2 == 0:
+            page = page + '''<section class="mbr-section content4 cid-rT9Gtgjfd0" id="content4-g">
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">''' + post['title'] + '''
+                </h2>
+                <h5 class="align-center">
+                    By ''' + post['author']+'''
+                </h5>
+                <!----<h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">-->
+                    '''+post['content']+'''
+               <!-- </h3>-->
+                
+            </div>
+        </div>
+    </div>
+    </section> 
+
+    '''
+        else:
+            page = page + '''<section class="mbr-section content4 cid-rT9GyeRrJv" id="content4-e">
+
+    
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-2">''' + post['title'] +'''</h2>
+                <h5 class="align-center">
+                    By '''+post['author']+'''
+                </h5>
+              <!---  <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">-->
+                    '''+post['content']+'''
+              <!---  </h3>-->
+                
+            </div>
+        </div>
+    </div>
+    </section>'''
+
+    page=page+'''{% endblock %}'''
+    text_file = open("templates/UpdatesTemplate.html", "w+")
+    text_file.write(page)
+    text_file.close()
+
+
+
+
+
+
 hopkins_pull()
 update_csse_data()
 update_prediction_data()
 write_counter()
-#forecast_14_day()
+posts = load_blog()
+
+generate_UpdatesTemplate()
 
 
 
 
 
-
-
-posts = [
-    {
-        'author': 'Matthew So',
-        'title': 'Title',
-        'content': 'Here is where we will put our data',
-        'date': 'Today'
-        }
-
-]
-
-
-for i in range(30):
-    author = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
-    title = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
-    date = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(6))
-    content = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(100))
-    posts.append({'author': author, 'title':title, 'content':content, 'date':date})
 
 
 
@@ -168,7 +267,7 @@ def gitpull():
 @app.route("/updates")
 @app.route("/")
 def updates():
-    return render_template('UpdatesTemplate.html', posts=posts)
+    return render_template('UpdatesTemplate.html')
 
 
 @app.route("/dashboard")
@@ -179,7 +278,7 @@ def dashboard():
 def dashboardtemplate():
     return render_template("DashboardTemplate.html")
 
-@app.route("/e")
+@app.route("/experiment")
 def experimental():
     return render_template('ExperimentTemplate.html')
 
@@ -194,6 +293,36 @@ def videoselection():
 @app.route("/counters")
 def counters():
     return render_template("counters.html")
+
+@app.route("/addpost")
+def addpost():
+    return render_template("addpost.html")
+
+@app.route('/addpost', methods=['POST'])
+def add_post_return():
+    user = request.form['username']
+    password = request.form['password']
+    author = request.form['author']
+    title = request.form['title']
+    content = request.form['content']
+    if (user == blog_user) and (str(hash(password)) == blog_pass):
+        add_blog_post(author,title,content,date.today())
+    generate_UpdatesTemplate()
+    return content
+
+@app.route("/deletepost")
+def deletepost():
+    return render_template("deletepost.html")
+
+@app.route('/deletepost', methods=['POST'])
+def delete_post_return():
+    user = request.form['username']
+    password = request.form['password']
+    title = request.form['title']
+    if (user == blog_user) and (str(hash(password)) == blog_pass):
+        delete_blog_post(title)
+    generate_UpdatesTemplate()
+    return title
 
 if __name__ == '__main__':
     app.run(debug=True)
