@@ -50,42 +50,41 @@ dataControlLib.update_data(var)
 
 
 @app.route("/c0pXalg2YTPY1QaN")
-def update():
+def forceUpdate():
     dataControlLib.update_data(var)
     assetGenLib.update_assets(var)
 
 
-@app.route("/updates")
+@app.route(projectVariables.updates_directory)
 @app.route("/")
 def updates():
-    return render_template('UpdatesTemplate.html')
+    return render_template(updatestemplate_html_file)
 
-
-@app.route("/dashboardtemplate")
+@app.route(projectVariables.dashboardtemplate_directory)
 def dashboardtemplate():
-    return render_template("DashboardTemplate.html")
+    return render_template(dashboardtempalte_html_file)
 
-@app.route("/dashboard")
+@app.route(projectVariables.dashboard_directory)
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template(projectVariables.dashboard_html_file)
 
-@app.route("/14dayforecast")
+@app.route(projectVariables.fourteen_day_forecast_directory)
 def forecase():
-    return render_template("14dayforecast.html")
+    return render_template("dynamicTemplates/14dayforecast.html")
 
-@app.route("/videoselection")
+@app.route(projectVariables.videoselection_directory)
 def videoselection():
-    return render_template("videoselection.html")
+    return render_template("dynamicTemplates/videoselection.html")
 
-@app.route("/counters")
+@app.route(projectVariables.counters_directory)
 def counters():
-    return render_template("counters.html")
+    return render_template("dynamicTemplates/counters.html")
 
-@app.route("/addpost")
+@app.route(projectVariables.addpost_directory)
 def addpost():
-    return render_template("addpost.html")
+    return render_template(projectVariables.addpost_html_file)
 
-@app.route('/addpost', methods=['POST'])
+@app.route(projectVariables.addpost_directory, methods=['POST'])
 def add_post_return():
     user = request.form['username']
     password = request.form['password']
@@ -97,11 +96,11 @@ def add_post_return():
     assetGenLib.generate_UpdatesTemplate()
     return content
 
-@app.route("/deletepost")
+@app.route(projectVariables.deletepost_directory)
 def deletepost():
-    return render_template("deletepost.html")
+    return render_template(projectVariables.deletepost_html_file)
 
-@app.route('/deletepost', methods=['POST'])
+@app.route(projectVariables.deletepost_directory, methods=['POST'])
 def delete_post_return():
     user = request.form['username']
     password = request.form['password']
