@@ -42,7 +42,7 @@ var = {
 
 
 dataControlLib.update_data(var)
-#assetGenLib.update_assets(var)
+# assetGenLib.update_assets(var)
 
 
 @app.route("/c0pXalg2YTPY1QaN")
