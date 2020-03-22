@@ -56,7 +56,7 @@ def forecast_14_day_multiple():
                 scope='usa',
                 showlakes=True, # lakes
                 lakecolor='rgb(255, 255, 255)'),
-            annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by Jeffery Shaman from the Columbia University Mailman School of Public Health')]
+            annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
         ) 
                 plotly.offline.plot(fig, filename='templates/dynamicTemplates/14dayforecasts/' + column +".html", auto_open=False)
         return True
@@ -126,7 +126,7 @@ def forecast_14_day():
 
 def write_counter(var):
     string = """
-<!DOCTYPE html> <html>
+    <!DOCTYPE html> <html>
   <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
@@ -137,7 +137,7 @@ def write_counter(var):
   <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
   <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">
 
-<style> 
+    <style> 
     .red {
         color: red;
     }
@@ -155,8 +155,8 @@ def write_counter(var):
         align-items: center;
         height: 100vh;
     }
-</style>
-<body>  
+    </style>
+    <body>  
     <div class="counter-container">
         <h2>Confirmed Cases:</h2>
         <h2 class="red">"""+str(var["csse_total_confirmed"])+"""</h2>
@@ -172,9 +172,9 @@ def write_counter(var):
             <span class="green">"""+str(var["mailman_14_day_date"])+"""</span>
         </h2>
     </div>
-</body>
-</html>
-"""
+    </body>
+    </html>
+    """
     text_file = open("templates/counters.html", "w+")
     text_file.write(string)
     text_file.close()

@@ -105,6 +105,10 @@ def delete_post_return():
     assetGenLib.generate_UpdatesTemplate()
     return title
 
+@app.route("/day1")
+def day1():
+    return render_template("dynamicTemplates/14dayforecasts/Day1.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
     
