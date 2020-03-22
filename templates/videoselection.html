@@ -14,7 +14,7 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
       function videoChange(sel){
-          document.getElementById("projectionVideo").src = "./static/" + sel.options[sel.selectedIndex].value;
+          document.getElementById("projectionVideo").src = "./static/videoSelection/" + sel.options[sel.selectedIndex].value;
       }
 
       function resizeIframe(obj) {
@@ -74,7 +74,7 @@
   </div>
   <article id="projectionArticle">
     <video id="projectionVideo" controls>
-        <source src="./static/nointervention.mp4" type="video/mp4">
+        <source src="./static/videoselectionAssets/nointervention.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
   </article>
