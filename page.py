@@ -63,27 +63,27 @@ def updates():
 
 @app.route("/dashboardtemplate")
 def dashboardtemplate():
-    return render_template("DashboardTemplate.html")
+    return render_template("staticTemplates/DashboardTemplate.html")
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template('dashboard.html')
+    return render_template('staticTemplates/Dashboard.html')
 
 @app.route("/14dayforecast")
 def forecase():
-    return render_template("14dayforecast.html")
+    return render_template("dynamicTemplates/14dayforecast.html")
 
 @app.route("/videoselection")
 def videoselection():
-    return render_template("videoselection.html")
+    return render_template("dynamicTemplates/videoselection.html")
 
 @app.route("/counters")
 def counters():
-    return render_template("counters.html")
+    return render_template("dynamicTemplates/counters.html")
 
 @app.route("/addpost")
 def addpost():
-    return render_template("addpost.html")
+    return render_template("staticTemplates/addpost.html")
 
 @app.route('/addpost', methods=['POST'])
 def add_post_return():
@@ -99,7 +99,7 @@ def add_post_return():
 
 @app.route("/deletepost")
 def deletepost():
-    return render_template("deletepost.html")
+    return render_template("staticTemplates/deletepost.html")
 
 @app.route('/deletepost', methods=['POST'])
 def delete_post_return():
