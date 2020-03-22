@@ -42,3 +42,8 @@ def update_prediction_data(var):
     var['mailman_14_day_undoc_total'] = df['Day14'].sum()
     df = pd.read_csv(projectVariables.mailman_doc_predictions,  dtype={"FIPS": str})
     var['mailman_14_day_doc_total'] = df['Day14'].sum()
+
+def update_data(var):
+    hopkins_pull()
+    update_csse_data(var)
+    update_prediction_data(var)

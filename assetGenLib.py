@@ -170,3 +170,8 @@ def generate_UpdatesTemplate():
     text_file = open("templates/UpdatesTemplate.html", "w+")
     text_file.write(page)
     text_file.close()
+
+def update_assets(var):
+    forecast_14_day()
+    write_counter(var)
+    generate_UpdatesTemplate()

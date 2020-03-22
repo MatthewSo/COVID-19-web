@@ -13,7 +13,6 @@ import glob
 import pickle
 from datetime import date
 
-
 import blogLib
 import assetGenLib
 import dataControlLib
@@ -45,20 +44,15 @@ var = {
 }
 
 
-dataControlLib.hopkins_pull()
-dataControlLib.update_csse_data(var)
-dataControlLib.update_prediction_data(var)
-
-assetGenLib.write_counter(var)
-assetGenLib.generate_UpdatesTemplate()
+dataControlLib.update_data(var)
+#assetGenLib.update_assets(var)
 
 
 
 @app.route("/c0pXalg2YTPY1QaN")
-def gitpull():
-    dataControlLib.hopkins_pull()
-    dataControlLib.update_csse_data(var)
-    dataControlLib.update_prediction_data(var)
+def update():
+    dataControlLib.update_data(var)
+    assetGenLib.update_assets(var)
 
 
 @app.route("/updates")
@@ -72,9 +66,8 @@ def dashboardtemplate():
     return render_template("DashboardTemplate.html")
 
 @app.route("/dashboard")
-@app.route("/experiment")
-def experimental():
-    return render_template('ExperimentTemplate.html')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route("/14dayforecast")
 def forecase():
