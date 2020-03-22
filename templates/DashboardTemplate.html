@@ -24,27 +24,31 @@
    position: absolute;
    top: 0;
    width: 100%;
-}
-</style>
 
+}
+.iframe-content {
+    border: 2px solid #0f7699;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+</style>
 
 <head>
 </head>
 <body>
-
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        <iframe id="igraph"  scrolling="no" style="border:none; visibility: visible;" seamless="seamless" src="/14dayforecast" width ="100%" height="500"></iframe>
+      <div class="col-md-8 forecast">
+        <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/14dayforecast" width ="100%" height="500px"></iframe>
       </div>
-      <div class="col-md-4">
-        <iframe id="igraph"  scrolling="no" style="border:none; visibility: visible;overflow:visible;" seamless="seamless" src="/counters" width ="100%" height="500"></iframe>
+      <div class="col-md-4 counters">
+        <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/counters" width ="100%" height="500px"></iframe>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" >
-        <iframe  scrolling="no" style="border:none; visibility: visible;" seamless="seamless" src="/videoselection" height="700px" width="100%"></iframe>
-
+      <div class="col-md-12 videoselection">
+        <iframe id="adjustable-iframe" class="iframe-content" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>
       </div>
     </div>
   </div>
