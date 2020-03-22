@@ -1,0 +1,211 @@
+total 8
+-rw-r--r--  1 sencha  staff  2989 21 mar 11:16 README.md
+drwxr-xr-x  6 sencha  staff   192 21 mar 11:16 archived_data
+drwxr-xr-x  6 sencha  staff   192 21 mar 11:16 csse_covid_19_data
+drwxr-xr-x  6 sencha  staff   192 21 mar 11:16 who_covid_19_situation_reports
+
+COVID-19/archived_data:
+total 8
+-rw-r--r--   1 sencha  staff   889 21 mar 11:16 README.md
+drwxr-xr-x  54 sencha  staff  1728 21 mar 11:16 archived_daily_case_updates
+drwxr-xr-x   7 sencha  staff   224 21 mar 11:16 archived_time_series
+
+COVID-19/archived_data/archived_daily_case_updates:
+total 408
+-rw-r--r--  1 sencha  staff  1227 21 mar 11:16 01-21-2020_2200.csv
+-rw-r--r--  1 sencha  staff  1750 21 mar 11:16 01-22-2020_1200.csv
+-rw-r--r--  1 sencha  staff  2020 21 mar 11:16 01-23-2020_1200.csv
+-rw-r--r--  1 sencha  staff  1828 21 mar 11:16 01-24-2020_0000.csv
+-rw-r--r--  1 sencha  staff  1952 21 mar 11:16 01-24-2020_1200.csv
+-rw-r--r--  1 sencha  staff  2057 21 mar 11:16 01-25-2020_0000.csv
+-rw-r--r--  1 sencha  staff  2069 21 mar 11:16 01-25-2020_1200.csv
+-rw-r--r--  1 sencha  staff  2081 21 mar 11:16 01-25-2020_2200.csv
+-rw-r--r--  1 sencha  staff  2100 21 mar 11:16 01-26-2020_1100.csv
+-rw-r--r--  1 sencha  staff  1904 21 mar 11:16 01-26-2020_2300.csv
+-rw-r--r--  1 sencha  staff  1887 21 mar 11:16 01-27-2020_0900.csv
+-rw-r--r--  1 sencha  staff  2051 21 mar 11:16 01-27-2020_1900.csv
+-rw-r--r--  1 sencha  staff  2194 21 mar 11:16 01-27-2020_2030.csv
+-rw-r--r--  1 sencha  staff  2060 21 mar 11:16 01-28-2020_1300.csv
+-rw-r--r--  1 sencha  staff  2104 21 mar 11:16 01-28-2020_1800.csv
+-rw-r--r--  1 sencha  staff  2108 21 mar 11:16 01-28-2020_2300.csv
+-rw-r--r--  1 sencha  staff  2160 21 mar 11:16 01-29-2020_1330.csv
+-rw-r--r--  1 sencha  staff  2186 21 mar 11:16 01-29-2020_1430.csv
+-rw-r--r--  1 sencha  staff  2380 21 mar 11:16 01-29-2020_2100.csv
+-rw-r--r--  1 sencha  staff  2336 21 mar 11:16 01-30-2020_1100.csv
+-rw-r--r--  1 sencha  staff  2364 21 mar 11:16 01-30-2020_2130.csv
+-rw-r--r--  1 sencha  staff  2443 21 mar 11:16 01-31-2020_1400.csv
+-rw-r--r--  1 sencha  staff  2459 21 mar 11:16 02-01-2020_1000.csv
+-rw-r--r--  1 sencha  staff  2785 21 mar 11:16 02-01-2020_1800.csv
+-rw-r--r--  1 sencha  staff  2777 21 mar 11:16 02-01-2020_2300.csv
+-rw-r--r--  1 sencha  staff  2979 21 mar 11:16 02-02-2020_0500.csv
+-rw-r--r--  1 sencha  staff  2991 21 mar 11:16 02-02-2020_1945.csv
+-rw-r--r--  1 sencha  staff  2781 21 mar 11:16 02-02-2020_2100.csv
+-rw-r--r--  1 sencha  staff  2835 21 mar 11:16 02-03-2020_1230.csv
+-rw-r--r--  1 sencha  staff  2736 21 mar 11:16 02-03-2020_2140.csv
+-rw-r--r--  1 sencha  staff  2745 21 mar 11:16 02-04-2020_0800.csv
+-rw-r--r--  1 sencha  staff  2776 21 mar 11:16 02-04-2020_1150.csv
+-rw-r--r--  1 sencha  staff  2769 21 mar 11:16 02-04-2020_2200.csv
+-rw-r--r--  1 sencha  staff  2784 21 mar 11:16 02-05-2020_1220.csv
+-rw-r--r--  1 sencha  staff  2816 21 mar 11:16 02-06-2020_1318.csv
+-rw-r--r--  1 sencha  staff  2817 21 mar 11:16 02-06-2020_2005.csv
+-rw-r--r--  1 sencha  staff  2866 21 mar 11:16 02-07-2020_2024.csv
+-rw-r--r--  1 sencha  staff  2871 21 mar 11:16 02-08-2020_1024.csv
+-rw-r--r--  1 sencha  staff  2860 21 mar 11:16 02-08-2020_2304.csv
+-rw-r--r--  1 sencha  staff  3356 21 mar 11:16 02-09-2020_1030.csv
+-rw-r--r--  1 sencha  staff  3358 21 mar 11:16 02-09-2020_2320.csv
+-rw-r--r--  1 sencha  staff  3359 21 mar 11:16 02-10-2020_1030.csv
+-rw-r--r--  1 sencha  staff  3360 21 mar 11:16 02-10-2020_1930.csv
+-rw-r--r--  1 sencha  staff  3415 21 mar 11:16 02-11-2020_1050.csv
+-rw-r--r--  1 sencha  staff  3416 21 mar 11:16 02-11-2020_2044.csv
+-rw-r--r--  1 sencha  staff  3417 21 mar 11:16 02-12-2020_1020.csv
+-rw-r--r--  1 sencha  staff  3420 21 mar 11:16 02-12-2020_2200.csv
+-rw-r--r--  1 sencha  staff  3423 21 mar 11:16 02-13-2020_1000.csv
+-rw-r--r--  1 sencha  staff  3471 21 mar 11:16 02-13-2020_2115.csv
+-rw-r--r--  1 sencha  staff  3471 21 mar 11:16 02-14-2020_1123.csv
+-rw-r--r--@ 1 sencha  staff   962 21 mar 11:16 README.md
+
+COVID-19/archived_data/archived_time_series:
+total 96
+-rw-r--r--  1 sencha  staff    276 21 mar 11:16 README.md
+-rwxr-xr-x  1 sencha  staff  16783 21 mar 11:16 time_series_2019-ncov-Confirmed.csv
+-rwxr-xr-x  1 sencha  staff  10122 21 mar 11:16 time_series_2019-ncov-Deaths.csv
+-rwxr-xr-x  1 sencha  staff  11664 21 mar 11:16 time_series_2019-ncov-Recovered.csv
+
+COVID-19/csse_covid_19_data:
+total 8
+-rw-r--r--   1 sencha  staff  2931 21 mar 11:16 README.md
+drwxr-xr-x  63 sencha  staff  2016 21 mar 11:16 csse_covid_19_daily_reports
+drwxr-xr-x   7 sencha  staff   224 21 mar 11:16 csse_covid_19_time_series
+
+COVID-19/csse_covid_19_data/csse_covid_19_daily_reports:
+total 968
+-rwxr-xr-x  1 sencha  staff   1675 21 mar 11:16 01-22-2020.csv
+-rwxr-xr-x  1 sencha  staff   1832 21 mar 11:16 01-23-2020.csv
+-rwxr-xr-x  1 sencha  staff   1695 21 mar 11:16 01-24-2020.csv
+-rwxr-xr-x  1 sencha  staff   1790 21 mar 11:16 01-25-2020.csv
+-rwxr-xr-x  1 sencha  staff   1896 21 mar 11:16 01-26-2020.csv
+-rwxr-xr-x  1 sencha  staff   2049 21 mar 11:16 01-27-2020.csv
+-rwxr-xr-x  1 sencha  staff   2102 21 mar 11:16 01-28-2020.csv
+-rwxr-xr-x  1 sencha  staff   2184 21 mar 11:16 01-29-2020.csv
+-rwxr-xr-x  1 sencha  staff   2334 21 mar 11:16 01-30-2020.csv
+-rwxr-xr-x  1 sencha  staff   2569 21 mar 11:16 01-31-2020.csv
+-rwxr-xr-x  1 sencha  staff   2785 21 mar 11:16 02-01-2020.csv
+-rwxr-xr-x  1 sencha  staff   3151 21 mar 11:16 02-02-2020.csv
+-rwxr-xr-x  1 sencha  staff   3201 21 mar 11:16 02-03-2020.csv
+-rwxr-xr-x  1 sencha  staff   3295 21 mar 11:16 02-04-2020.csv
+-rwxr-xr-x  1 sencha  staff   3341 21 mar 11:16 02-05-2020.csv
+-rwxr-xr-x  1 sencha  staff   3345 21 mar 11:16 02-06-2020.csv
+-rwxr-xr-x  1 sencha  staff   3402 21 mar 11:16 02-07-2020.csv
+-rwxr-xr-x  1 sencha  staff   3409 21 mar 11:16 02-08-2020.csv
+-rwxr-xr-x  1 sencha  staff   3429 21 mar 11:16 02-09-2020.csv
+-rwxr-xr-x  1 sencha  staff   3433 21 mar 11:16 02-10-2020.csv
+-rwxr-xr-x  1 sencha  staff   3490 21 mar 11:16 02-11-2020.csv
+-rwxr-xr-x  1 sencha  staff   3493 21 mar 11:16 02-12-2020.csv
+-rwxr-xr-x  1 sencha  staff   3545 21 mar 11:16 02-13-2020.csv
+-rw-r--r--  1 sencha  staff   3504 21 mar 11:16 02-14-2020.csv
+-rw-r--r--  1 sencha  staff   3509 21 mar 11:16 02-15-2020.csv
+-rw-r--r--  1 sencha  staff   3510 21 mar 11:16 02-16-2020.csv
+-rw-r--r--  1 sencha  staff   3585 21 mar 11:16 02-17-2020.csv
+-rw-r--r--  1 sencha  staff   3588 21 mar 11:16 02-18-2020.csv
+-rw-r--r--  1 sencha  staff   3550 21 mar 11:16 02-19-2020.csv
+-rw-r--r--  1 sencha  staff   3551 21 mar 11:16 02-20-2020.csv
+-rw-r--r--  1 sencha  staff   3941 21 mar 11:16 02-21-2020.csv
+-rw-r--r--  1 sencha  staff   4011 21 mar 11:16 02-22-2020.csv
+-rw-r--r--  1 sencha  staff   4050 21 mar 11:16 02-23-2020.csv
+-rw-r--r--  1 sencha  staff   4261 21 mar 11:16 02-24-2020.csv
+-rw-r--r--  1 sencha  staff   4415 21 mar 11:16 02-25-2020.csv
+-rw-r--r--  1 sencha  staff   4647 21 mar 11:16 02-26-2020.csv
+-rw-r--r--  1 sencha  staff   4796 21 mar 11:16 02-27-2020.csv
+-rw-r--r--  1 sencha  staff   5140 21 mar 11:16 02-28-2020.csv
+-rw-r--r--  1 sencha  staff   5360 21 mar 11:16 02-29-2020.csv
+-rw-r--r--  1 sencha  staff   7710 21 mar 11:16 03-01-2020.csv
+-rw-r--r--  1 sencha  staff   8670 21 mar 11:16 03-02-2020.csv
+-rw-r--r--  1 sencha  staff   9293 21 mar 11:16 03-03-2020.csv
+-rw-r--r--  1 sencha  staff   9833 21 mar 11:16 03-04-2020.csv
+-rw-r--r--  1 sencha  staff  10684 21 mar 11:16 03-05-2020.csv
+-rw-r--r--  1 sencha  staff  12314 21 mar 11:16 03-06-2020.csv
+-rw-r--r--  1 sencha  staff  14074 21 mar 11:16 03-07-2020.csv
+-rw-r--r--  1 sencha  staff  16037 21 mar 11:16 03-08-2020.csv
+-rw-r--r--  1 sencha  staff  16704 21 mar 11:16 03-09-2020.csv
+-rw-r--r--  1 sencha  staff  12052 21 mar 11:16 03-10-2020.csv
+-rw-r--r--  1 sencha  staff  12336 21 mar 11:16 03-11-2020.csv
+-rw-r--r--  1 sencha  staff  12451 21 mar 11:16 03-12-2020.csv
+-rw-r--r--  1 sencha  staff  13506 21 mar 11:16 03-13-2020.csv
+-rw-r--r--  1 sencha  staff  14261 21 mar 11:16 03-14-2020.csv
+-rw-r--r--  1 sencha  staff  14987 21 mar 11:16 03-15-2020.csv
+-rw-r--r--  1 sencha  staff  15658 21 mar 11:16 03-16-2020.csv
+-rw-r--r--  1 sencha  staff  15905 21 mar 11:16 03-17-2020.csv
+-rw-r--r--  1 sencha  staff  16382 21 mar 11:16 03-18-2020.csv
+-rw-r--r--  1 sencha  staff  16874 21 mar 11:16 03-19-2020.csv
+-rw-r--r--@ 1 sencha  staff  17301 21 mar 11:16 03-20-2020.csv
+-rw-r--r--  1 sencha  staff      0 21 mar 11:16 README.md
+
+COVID-19/csse_covid_19_data/csse_covid_19_time_series:
+total 456
+-rw-r--r--  1 sencha  staff      0 21 mar 11:16 README.md
+-rw-r--r--@ 1 sencha  staff  79112 21 mar 11:16 time_series_19-covid-Confirmed.csv
+-rw-r--r--@ 1 sencha  staff  73178 21 mar 11:16 time_series_19-covid-Deaths.csv
+-rw-r--r--  1 sencha  staff  75643 21 mar 11:16 time_series_19-covid-Recovered.csv
+
+COVID-19/who_covid_19_situation_reports:
+total 8
+-rw-r--r--   1 sencha  staff  1063 21 mar 11:16 README.md
+drwxr-xr-x  52 sencha  staff  1664 21 mar 11:16 who_covid_19_sit_rep_pdfs
+drwxr-xr-x   4 sencha  staff   128 21 mar 11:16 who_covid_19_sit_rep_time_series
+
+COVID-19/who_covid_19_situation_reports/who_covid_19_sit_rep_pdfs:
+total 93936
+-rw-r--r--  1 sencha  staff   764470 21 mar 11:16 20200121-sitrep-1-2019-ncov.pdf
+-rw-r--r--  1 sencha  staff   781858 21 mar 11:16 20200122-sitrep-2-2019-ncov.pdf
+-rw-r--r--  1 sencha  staff  1102034 21 mar 11:16 20200123-sitrep-3-2019-ncov.pdf
+-rw-r--r--  1 sencha  staff   906395 21 mar 11:16 20200124-sitrep-4-2019-ncov.pdf
+-rw-r--r--  1 sencha  staff  1016346 21 mar 11:16 20200125-sitrep-5-2019-ncov.pdf
+-rw-r--r--  1 sencha  staff  1023943 21 mar 11:16 20200126-sitrep-6-2019--ncov.pdf
+-rw-r--r--  1 sencha  staff   757776 21 mar 11:16 20200127-sitrep-7-2019--ncov.pdf
+-rw-r--r--  1 sencha  staff   717421 21 mar 11:16 20200128-sitrep-8-ncov-cleared.pdf
+-rw-r--r--  1 sencha  staff   690364 21 mar 11:16 20200129-sitrep-9-ncov-v2.pdf
+-rw-r--r--  1 sencha  staff   733584 21 mar 11:16 20200130-sitrep-10-ncov.pdf
+-rw-r--r--  1 sencha  staff   801545 21 mar 11:16 20200131-sitrep-11-ncov.pdf
+-rw-r--r--  1 sencha  staff   774862 21 mar 11:16 20200201-sitrep-12-ncov.pdf
+-rw-r--r--  1 sencha  staff   799454 21 mar 11:16 20200202-sitrep-13-ncov-v3.pdf
+-rw-r--r--  1 sencha  staff  1000634 21 mar 11:16 20200203-sitrep-14-ncov.pdf
+-rw-r--r--  1 sencha  staff   785500 21 mar 11:16 20200204-sitrep-15-ncov.pdf
+-rw-r--r--  1 sencha  staff  1014944 21 mar 11:16 20200205-sitrep-16-ncov.pdf
+-rw-r--r--  1 sencha  staff  1097524 21 mar 11:16 20200206-sitrep-17-ncov.pdf
+-rw-r--r--  1 sencha  staff   921085 21 mar 11:16 20200207-sitrep-18-ncov.pdf
+-rw-r--r--  1 sencha  staff  1024281 21 mar 11:16 20200208-sitrep-19-ncov.pdf
+-rw-r--r--  1 sencha  staff   993571 21 mar 11:16 20200209-sitrep-20-ncov.pdf
+-rw-r--r--  1 sencha  staff   954883 21 mar 11:16 20200210-sitrep-21-ncov.pdf
+-rw-r--r--  1 sencha  staff  1005184 21 mar 11:16 20200211-sitrep-22-ncov.pdf
+-rw-r--r--  1 sencha  staff  1037453 21 mar 11:16 20200212-sitrep-23-ncov.pdf
+-rw-r--r--  1 sencha  staff  1068251 21 mar 11:16 20200213-sitrep-24-covid-19.pdf
+-rw-r--r--  1 sencha  staff   967796 21 mar 11:16 20200214-sitrep-25-covid-19.pdf
+-rw-r--r--  1 sencha  staff   940622 21 mar 11:16 20200215-sitrep-26-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1095336 21 mar 11:16 20200216-sitrep-27-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1274353 21 mar 11:16 20200217-sitrep-28-covid-19.pdf
+-rw-r--r--  1 sencha  staff   969133 21 mar 11:16 20200218-sitrep-29-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1118189 21 mar 11:16 20200219-sitrep-30-covid-19.pdf
+-rw-r--r--  1 sencha  staff   954859 21 mar 11:16 20200220-sitrep-31-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1014554 21 mar 11:16 20200221-sitrep-32-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1089171 21 mar 11:16 20200222-sitrep-33-covid-19.pdf
+-rw-r--r--  1 sencha  staff   923307 21 mar 11:16 20200223-sitrep-34-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1280927 21 mar 11:16 20200224-sitrep-35-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1040861 21 mar 11:16 20200225-sitrep-36-covid-19.pdf
+-rw-r--r--  1 sencha  staff   864348 21 mar 11:16 20200226-sitrep-37-covid-19.pdf
+-rw-r--r--  1 sencha  staff   978463 21 mar 11:16 20200227-sitrep-38-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1079326 21 mar 11:16 20200228-sitrep-39-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1018078 21 mar 11:16 20200229-sitrep-40-covid-19.pdf
+-rw-r--r--  1 sencha  staff   879065 21 mar 11:16 20200301-sitrep-41-covid-19.pdf
+-rw-r--r--  1 sencha  staff   923008 21 mar 11:16 20200302-sitrep-42-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1170956 21 mar 11:16 20200303-sitrep-43-covid-19.pdf
+-rw-r--r--  1 sencha  staff   969597 21 mar 11:16 20200304-sitrep-44-covid-19.pdf
+-rw-r--r--  1 sencha  staff   682952 21 mar 11:16 20200305-sitrep-45-covid-19.pdf
+-rw-r--r--  1 sencha  staff   608856 21 mar 11:16 20200306-sitrep-46-covid-19.pdf
+-rw-r--r--  1 sencha  staff   814695 21 mar 11:16 20200307-sitrep-47-covid-19.pdf
+-rw-r--r--  1 sencha  staff   856853 21 mar 11:16 20200308-sitrep-48-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1307450 21 mar 11:16 20200309-sitrep-49-covid-19.pdf
+-rw-r--r--  1 sencha  staff  1394545 21 mar 11:16 20200310-sitrep-50-covid-19.pdf
+
+COVID-19/who_covid_19_situation_reports/who_covid_19_sit_rep_time_series:
+total 40
+-rw-r--r--@ 1 sencha  staff  16573 21 mar 11:16 who_covid_19_sit_rep_time_series.csv
