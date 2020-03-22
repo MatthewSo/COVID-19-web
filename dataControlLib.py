@@ -13,6 +13,8 @@ import glob
 import pickle
 from datetime import date
 
+import projectVariables
+
 
 
 def hopkins_pull():
@@ -20,8 +22,8 @@ def hopkins_pull():
     g.pull()
     print(glob.glob("COVID-19/*"))
 
-def update_csse_data():
-    csse_daily_reports = glob.glob(csse_daily_reports_folder + "/*")
+def update_csse_data(var):
+    csse_daily_reports = glob.glob(projectVariables.csse_daily_reports_folder + "/*")
     csse_daily_reports.remove(max(csse_daily_reports))
 
     csse_daily_report_latest_date = max(csse_daily_reports)[-14:-4]
@@ -35,8 +37,8 @@ def update_csse_data():
     var['csse_us_confirmed'] = csse_daily_reports_df.loc[csse_daily_reports_df['Country/Region'] == 'US', 'Confirmed'].sum()
     print (var['csse_us_confirmed'])
 
-def update_prediction_data():
-    df = pd.read_csv(mailman_undoc_predictions,  dtype={"FIPS": str})
+def update_prediction_data(var):
+    df = pd.read_csv(projectVariables.mailman_undoc_predictions,  dtype={"FIPS": str})
     var['mailman_14_day_undoc_total'] = df['Day14'].sum()
-    df = pd.read_csv(mailman_doc_predictions,  dtype={"FIPS": str})
+    df = pd.read_csv(projectVariables.mailman_doc_predictions,  dtype={"FIPS": str})
     var['mailman_14_day_doc_total'] = df['Day14'].sum()
