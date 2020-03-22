@@ -12,7 +12,7 @@ def save_blog(posts):
 
 def load_blog():
     with open(blog_file, 'rb') as f:
-        return pickle.load(f)
+        return pickle.load(f, encoding='latin1')
 
 def add_blog_post(author, title, content, date):
     posts_temp = load_blog()

@@ -5,6 +5,7 @@ import numpy as np
 import plotly.express as px
 import json
 import urllib
+from urllib.request import urlopen
 import plotly.io as pio
 import git
 import os
@@ -16,7 +17,7 @@ import blogLib
 
 
 def forecast_14_day():
-        response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+        response = urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
         counties = json.load(response)
         df = pd.read_csv("county_undoc.csv",  dtype={"FIPS": str})
         fig = go.Figure()
@@ -79,8 +80,9 @@ def forecast_14_day():
         return fig
 
 def write_counter(var):
-    string="<!DOCTYPE html> <html><body>"
-    string = string + '''  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    string = """
+<!DOCTYPE html> <html>
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-grid.min.css">
@@ -88,11 +90,46 @@ def write_counter(var):
   <link rel="stylesheet" href="/static/updateAssets/dropdown/css/style.css">
   <link rel="stylesheet" href="/static/updateAssets/tether/tether.min.css">
   <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
-  <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">'''
-  
-    string = string + "<h1>Confirmed Cases:</h1><h1 style=\"color:red\">"+str(var["csse_total_confirmed"])+"</h1><h1>Confirmed US Cases:</h1><h1 style=\"color:red\">"+str(var["csse_us_confirmed"])+"</h1><h3>Last Updated on " + var["csse_updated"] + "</h3><h1>14 Day Predicted US Cases:</h1><h1><span style=\"color:red\">"+ str(var["mailman_14_day_doc_total"])+"</span> by <span style=\"color:green\">"+ str(var["mailman_14_day_date"])+"</span></h1>"
-    
-    string= string + "</body></html>"
+  <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">
+
+<style> 
+    .red {
+        color: red;
+    }
+    .green {
+        color: green;
+    }
+    .big {
+        width: 100%;
+        text-align: center;
+    }
+    .counter-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+</style>
+<body>  
+    <div class="counter-container">
+        <h2>Confirmed Cases:</h2>
+        <h2 class="red">"""+str(var["csse_total_confirmed"])+"""</h2>
+        </br>
+        <h2>Confirmed US Cases:</h2>
+        <h2 class="red">"""+str(var["csse_us_confirmed"])+"""</h2>
+        <h5>Last Updated on 03-20-2020</h5>
+        </br>
+        <h3 class="big">14 Day Predicted US Cases:</h3>
+        <h2>
+            <span class="red">"""+str(var["mailman_14_day_doc_total"])+"""</span>
+        by 
+            <span class="green">"""+str(var["mailman_14_day_date"])+"""</span>
+        </h2>
+    </div>
+</body>
+</html>
+"""
     text_file = open("templates/counters.html", "w+")
     text_file.write(string)
     text_file.close()
