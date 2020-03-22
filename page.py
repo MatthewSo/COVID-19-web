@@ -58,7 +58,7 @@ def update():
 @app.route("/updates")
 @app.route("/")
 def updates():
-    return render_template('UpdatesTemplate.html')
+    return render_template('staticTemplates/UpdatesTemplate.html')
 
 
 @app.route("/dashboardtemplate")
