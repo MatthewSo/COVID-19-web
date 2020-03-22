@@ -23,5 +23,3 @@ def delete_blog_post(title):
     posts_temp = load_blog()
     ret = [i for i in posts_temp if not (i['title'] == title)] 
     save_blog(ret)
-
-def load_posts():
