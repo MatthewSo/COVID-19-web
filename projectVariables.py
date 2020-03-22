@@ -14,3 +14,12 @@ counters_directory = "/counters"
 videoselection_directory = "/videoselection"
 fourteen_day_forecast_directory = "/14dayforecast"
 updates_directory = "/updates"
+
+#HTML FILE NAMES
+
+#   STATIC
+dashboardtempalte_html_file = "staticTemplates/DashboardTemplate.html"
+updatestemplate_html_file = 'staticTemplates/UpdatesTemplate.html'
+dashboard_html_file = 'staticTemplates/Dashboard.html'
+addpost_html_file = "staticTemplates/addpost.html"
+deletepost_html_file = "staticTemplates/deletepost.html"

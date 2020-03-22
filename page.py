@@ -50,7 +50,7 @@ dataControlLib.update_data(var)
 
 
 @app.route("/c0pXalg2YTPY1QaN")
-def update():
+def forceUpdate():
     dataControlLib.update_data(var)
     assetGenLib.update_assets(var)
 
@@ -58,16 +58,15 @@ def update():
 @app.route(projectVariables.updates_directory)
 @app.route("/")
 def updates():
-    return render_template('staticTemplates/UpdatesTemplate.html')
-
+    return render_template(updatestemplate_html_file)
 
 @app.route(projectVariables.dashboardtemplate_directory)
 def dashboardtemplate():
-    return render_template("staticTemplates/DashboardTemplate.html")
+    return render_template(dashboardtempalte_html_file)
 
 @app.route(projectVariables.dashboard_directory)
 def dashboard():
-    return render_template('staticTemplates/Dashboard.html')
+    return render_template(projectVariables.dashboard_html_file)
 
 @app.route(projectVariables.fourteen_day_forecast_directory)
 def forecase():
@@ -83,7 +82,7 @@ def counters():
 
 @app.route(projectVariables.addpost_directory)
 def addpost():
-    return render_template("staticTemplates/addpost.html")
+    return render_template(projectVariables.addpost_html_file)
 
 @app.route(projectVariables.addpost_directory, methods=['POST'])
 def add_post_return():
@@ -99,7 +98,7 @@ def add_post_return():
 
 @app.route(projectVariables.deletepost_directory)
 def deletepost():
-    return render_template("staticTemplates/deletepost.html")
+    return render_template(projectVariables.deletepost_html_file)
 
 @app.route(projectVariables.deletepost_directory, methods=['POST'])
 def delete_post_return():
