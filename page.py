@@ -22,12 +22,9 @@ import projectVariables
 import string
 import random
 
-#VAR
+#USER
 blog_user="miso"
 blog_pass='-905124903459320104'
-
-
-
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -48,21 +45,19 @@ dataControlLib.update_data(var)
 #assetGenLib.update_assets(var)
 
 
-
 @app.route("/c0pXalg2YTPY1QaN")
 def forceUpdate():
     dataControlLib.update_data(var)
     assetGenLib.update_assets(var)
 
-
 @app.route(projectVariables.updates_directory)
 @app.route("/")
 def updates():
-    return render_template(updatestemplate_html_file)
+    return render_template(projectVariables.updatestemplate_html_file)
 
 @app.route(projectVariables.dashboardtemplate_directory)
 def dashboardtemplate():
-    return render_template(dashboardtempalte_html_file)
+    return render_template(projectVariables.dashboardtempalte_html_file)
 
 @app.route(projectVariables.dashboard_directory)
 def dashboard():
@@ -70,15 +65,15 @@ def dashboard():
 
 @app.route(projectVariables.fourteen_day_forecast_directory)
 def forecase():
-    return render_template("dynamicTemplates/14dayforecast.html")
+    return render_template(projectVariables.fourteen_day_forecast_html_file)
 
 @app.route(projectVariables.videoselection_directory)
 def videoselection():
-    return render_template("dynamicTemplates/videoselection.html")
+    return render_template(projectVariables.videoselection_html_file)
 
 @app.route(projectVariables.counters_directory)
 def counters():
-    return render_template("dynamicTemplates/counters.html")
+    return render_template(projectVariables.counters_html_file)
 
 @app.route(projectVariables.addpost_directory)
 def addpost():

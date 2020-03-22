@@ -23,3 +23,8 @@ updatestemplate_html_file = 'staticTemplates/UpdatesTemplate.html'
 dashboard_html_file = 'staticTemplates/Dashboard.html'
 addpost_html_file = "staticTemplates/addpost.html"
 deletepost_html_file = "staticTemplates/deletepost.html"
+
+#   DYNAMIC
+fourteen_day_forecast_html_file = "dynamicTemplates/14dayforecast.html"
+videoselection_html_file = "dynamicTemplates/videoselection.html"
+counters_html_file = "dynamicTemplates/counters.html"

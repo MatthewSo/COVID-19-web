@@ -13,7 +13,52 @@ import pickle
 from datetime import date
 import blogLib
 
+def state_time_series():
+    print("hello")
 
+def forecast_14_day_multiple():
+        response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+        counties = json.load(response)
+        df = pd.read_csv("county_undoc.csv",  dtype={"FIPS": str})
+        max = 0.0   
+
+        for column in df.columns:
+            if (column[0:3] == "Day"):
+                if df[column].max() > max:
+                    max = df[column].max().astype(float)
+
+        for column in df.columns:
+            if (column[0:3] == "Day"):
+                fig = go.Figure()
+                print(column)
+                fig.add_trace(go.Choropleth(
+                    zmax=1.0, zmin = 0.0,
+                    zauto = False,
+                    visible = True,
+                    locations=df['FIPS'],
+                    ids=df['County'],
+                    text=df['County'],
+                    hoverinfo="text+z",
+                    z=df[column].astype(float),
+                    zsrc="Data from Jeffery Shaman at Columbia University Mailman School of Public Health",
+                    geojson = counties,
+                    colorscale='jet',
+                    marker_line_width=0, # line markers between states
+                    
+            )
+            )
+                fig.data[0].update( zauto = False,zmax=max, zmin = 0)
+                fig.update_layout(
+            title_text='COVID-19 14 Day Projection',
+            #coloraxis = {'colorscale':'reds'},
+            geo = dict(
+                scope='usa',
+                showlakes=True, # lakes
+                lakecolor='rgb(255, 255, 255)'),
+            annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by Jeffery Shaman from the Columbia University Mailman School of Public Health')]
+        ) 
+                plotly.offline.plot(fig, filename='templates/dynamicTemplates/14dayforecasts/' + column +".html", auto_open=False)
+        return True
 
 def forecast_14_day():
         response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
