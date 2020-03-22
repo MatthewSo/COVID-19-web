@@ -24,11 +24,6 @@ import string
 import random
 
 #VAR
-mailman_undoc_predictions = "county_undoc.csv"
-mailman_doc_predictions = "county_doc.csv"
-csse_daily_reports_folder = "COVID-19/csse_covid_19_data/csse_covid_19_daily_reports"
-blog_file = "blog.pkl"
-
 blog_user="miso"
 blog_pass='-905124903459320104'
 
@@ -49,37 +44,21 @@ var = {
     'mailman_14_day_date':"04-02-2020"
 }
 
-posts=[]
-
-
-
-
-
-
-
-
-
-
 
 dataControlLib.hopkins_pull()
 dataControlLib.update_csse_data(var)
 dataControlLib.update_prediction_data(var)
-assetGenLib.write_counter(var)
-posts = blogLib.load_blog()
 
+assetGenLib.write_counter(var)
 assetGenLib.generate_UpdatesTemplate()
 
 
 
-
-
-
-
-
-
-@app.route("/gitpullc0pXalg2YTPY1QaN")
+@app.route("/c0pXalg2YTPY1QaN")
 def gitpull():
-    hopkins_pull()
+    dataControlLib.hopkins_pull()
+    dataControlLib.update_csse_data(var)
+    dataControlLib.update_prediction_data(var)
 
 
 @app.route("/updates")
@@ -122,7 +101,7 @@ def add_post_return():
     content = request.form['content']
     if (user == blog_user) and (str(hash(password)) == blog_pass):
         blogLib.add_blog_post(author,title,content,date.today())
-    generate_UpdatesTemplate()
+    assetGenLib.generate_UpdatesTemplate()
     return content
 
 @app.route("/deletepost")
@@ -136,7 +115,7 @@ def delete_post_return():
     title = request.form['title']
     if (user == blog_user) and (str(hash(password)) == blog_pass):
         blogLib.delete_blog_post(title)
-    generate_UpdatesTemplate()
+    assetGenLib.generate_UpdatesTemplate()
     return title
 
 if __name__ == '__main__':
