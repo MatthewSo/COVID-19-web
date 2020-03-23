@@ -14,7 +14,7 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
       function fourteenDayChange(sel){
-          document.getElementById("igraph").src =  "/day" + sel.value;
+          document.getElementById("igraph").src =  "/covid19/day" + sel.value;
       }
 
       function resizeIframe(obj) {
@@ -61,7 +61,7 @@
 <body onload="resizeIframe(this)" onresize="resizeIframe(this)">
 
   <article id="projectionArticle">
-    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/day1" width ="100%" height="500px"></iframe>
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/covid19/day1" width ="100%" height="500px"></iframe>
   </article>
   </div>
   <div id="scenario-container" class="scenario-container">

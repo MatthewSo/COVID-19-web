@@ -116,7 +116,7 @@ def projections():
 
 @app.route("/projectionsZIP<int:n>")
 def projectionsZIP(n):
-    return render_template("dynamicTemplates/projectionsZIP.html",projection_load="/projectionZip" + str(n))
+    return render_template("dynamicTemplates/projectionsZIP.html",projection_load="/covid19/projectionZip" + str(n))
 
 @app.route("/day<int:n>")
 def day_n(n):
