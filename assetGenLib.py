@@ -14,11 +14,16 @@ import pickle
 from datetime import date
 import blogLib
 
+def replaceZeroes(data):
+  temp = np.copy(data)
+  temp[temp == 0] = 1
+  return temp
+
 def potential_outcomes_multiple():
     response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
     counties = json.load(response)
     df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
-    max = df["total_97.5"].max()
+    max = np.log10(df['total_97.5']).max()
     dates = df.Date.unique()
     i = 0
     for date in dates:
@@ -30,11 +35,13 @@ def potential_outcomes_multiple():
                     zmax=1.0, zmin = 0.0,
                     zauto = False,
                     visible = True,
+                    name=date,
                     locations=df['fips'],
                     ids=df_temp['county'],
-                    text=df_temp['county'],
-                    hoverinfo="text+z",
-                    z=df_temp["total_97.5"].astype(float),
+                    text=df_temp['total_97.5'],
+                    customdata= df_temp['county'],
+                    hoverinfo="text",
+                    z=np.log10(replaceZeroes(df_temp['total_97.5'])).astype(float),
                     zsrc="Data from CPID at Columbia University Mailman School of Public Health",
                     geojson = counties,
                     colorscale='jet',
@@ -55,6 +62,7 @@ def potential_outcomes_multiple():
     return True
 
 potential_outcomes_multiple()
+
 def forecast_14_day_multiple():
         response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
         counties = json.load(response)
