@@ -43,6 +43,7 @@ var = {
 
 dataControlLib.update_data(var)
 #assetGenLib.update_assets(var)
+assetGenLib.potential_outcomes()
 
 
 @app.route("/c0pXalg2YTPY1QaN")
@@ -105,61 +106,12 @@ def delete_post_return():
     assetGenLib.generate_UpdatesTemplate()
     return title
 
-@app.route("/day1")
-def day1():
-    return render_template("dynamicTemplates/14dayforecasts/Day1.html")
+@app.route("/day<int:n>")
+def day_n(n):
+    return render_template("dynamicTemplates/14dayforecasts/Day" + str(n) +".html")
 
-@app.route("/day2")
-def day2():
-    return render_template("dynamicTemplates/14dayforecasts/Day2.html")
 
-@app.route("/day3")
-def day3():
-    return render_template("dynamicTemplates/14dayforecasts/Day3.html")
 
-@app.route("/day4")
-def day4():
-    return render_template("dynamicTemplates/14dayforecasts/Day4.html")
-
-@app.route("/day5")
-def day5():
-    return render_template("dynamicTemplates/14dayforecasts/Day5.html")
-
-@app.route("/day6")
-def day6():
-    return render_template("dynamicTemplates/14dayforecasts/Day6.html")
-
-@app.route("/day7")
-def day7():
-    return render_template("dynamicTemplates/14dayforecasts/Day7.html")
-
-@app.route("/day8")
-def day8():
-    return render_template("dynamicTemplates/14dayforecasts/Day8.html")
-
-@app.route("/day9")
-def day9():
-    return render_template("dynamicTemplates/14dayforecasts/Day9.html")
-
-@app.route("/day10")
-def day10():
-    return render_template("dynamicTemplates/14dayforecasts/Day10.html")
-
-@app.route("/day11")
-def day11():
-    return render_template("dynamicTemplates/14dayforecasts/Day11.html")
-
-@app.route("/day12")
-def day12():
-    return render_template("dynamicTemplates/14dayforecasts/Day12.html")
-
-@app.route("/day13")
-def day13():
-    return render_template("dynamicTemplates/14dayforecasts/Day13.html")
-
-@app.route("/day14")
-def day14():
-    return render_template("dynamicTemplates/14dayforecasts/Day14.html")
 
 
 

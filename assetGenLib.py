@@ -5,7 +5,7 @@ import numpy as np
 import plotly.express as px
 import json
 import urllib
-from urllib.request import urlopen
+
 import plotly.io as pio
 import git
 import os
@@ -14,11 +14,49 @@ import pickle
 from datetime import date
 import blogLib
 
-def state_time_series():
-    print("hello")
+def potential_outcomes_multiple():
+    response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+    counties = json.load(response)
+    df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
+    max = df["total_97.5"].max()
+    dates = df.Date.unique()
+    i = 0
+    for date in dates:
+        print(date)
+        i=i+1
+        df_temp = df.loc[df['Date'] == date]
+        fig = go.Figure()
+        fig.add_trace(go.Choropleth(
+                    zmax=1.0, zmin = 0.0,
+                    zauto = False,
+                    visible = True,
+                    locations=df['fips'],
+                    ids=df_temp['county'],
+                    text=df_temp['county'],
+                    hoverinfo="text+z",
+                    z=df_temp["total_97.5"].astype(float),
+                    zsrc="Data from CPID at Columbia University Mailman School of Public Health",
+                    geojson = counties,
+                    colorscale='jet',
+                    marker_line_width=0, # line markers between states
+        )
+        )
+        fig.data[0].update( zauto = False,zmax=max, zmin = 0)
+        fig.update_layout(
+        title_text='COVID-19 5% Mobility Projection: ' + date,
+            #coloraxis = {'colorscale':'reds'},
+            geo = dict(
+                scope='usa',
+                showlakes=True, # lakes
+                lakecolor='rgb(255, 255, 255)'),
+            annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
+        ) 
+        plotly.offline.plot(fig, filename='templates/dynamicTemplates/projections/5%/' + str(i) +".html", auto_open=False)
+    return True
 
+potential_outcomes_multiple()
 def forecast_14_day_multiple():
-        response = urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+        response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
         counties = json.load(response)
         df = pd.read_csv("county_undoc.csv",  dtype={"FIPS": str})
         max = 0.0   
@@ -32,7 +70,6 @@ def forecast_14_day_multiple():
             if (column[0:3] == "Day"):
                 i = i + 1
                 fig = go.Figure()
-                print(column)
                 fig.add_trace(go.Choropleth(
                     zmax=1.0, zmin = 0.0,
                     zauto = False,
