@@ -58,11 +58,11 @@ def forceUpdate():
 @app.route(projectVariables.updates_directory)
 @app.route("/")
 def updates():
-    return render_template(updatestemplate_html_file)
+    return render_template(projectVariables.updatestemplate_html_file)
 
 @app.route(projectVariables.dashboardtemplate_directory)
 def dashboardtemplate():
-    return render_template(dashboardtempalte_html_file)
+    return render_template(projectVariables.dashboardtempalte_html_file)
 
 @app.route(projectVariables.dashboard_directory)
 def dashboard():
@@ -79,6 +79,10 @@ def videoselection():
 @app.route(projectVariables.counters_directory)
 def counters():
     return render_template("dynamicTemplates/counters.html")
+
+@app.route(projectVariables.references_directory)
+def references():
+    return render_template(projectVariables.references_html_file)
 
 @app.route(projectVariables.addpost_directory)
 def addpost():
