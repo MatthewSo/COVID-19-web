@@ -14,7 +14,7 @@ import pickle
 from datetime import date
 
 import blogLib
-import assetGenLib
+
 import dataControlLib
 
 import projectVariables
@@ -43,7 +43,7 @@ var = {
 
 dataControlLib.update_data(var)
 #assetGenLib.update_assets(var)
-assetGenLib.potential_outcomes()
+#assetGenLib.potential_outcomes()
 
 
 @app.route("/c0pXalg2YTPY1QaN")
@@ -106,11 +106,17 @@ def delete_post_return():
     assetGenLib.generate_UpdatesTemplate()
     return title
 
+@app.route("/projections")
+def projections():
+    return render_template("dynamicTemplates/projections.html")
+
 @app.route("/day<int:n>")
 def day_n(n):
     return render_template("dynamicTemplates/14dayforecasts/Day" + str(n) +".html")
 
-
+@app.route("/projection<int:n>")
+def projection_n(n):
+    return render_template("dynamicTemplates/projections/5%/" + str(n) +".html")
 
 
 
