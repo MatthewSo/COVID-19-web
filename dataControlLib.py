@@ -47,3 +47,14 @@ def update_data(var):
     hopkins_pull()
     update_csse_data(var)
     update_prediction_data(var)
+    zip_fips_data(var)
+
+def zip_fips_data(var):
+    var['zip_fips'] =  pd.read_csv("ZIP_FIPS.csv")
+
+def fips_finder(var,zip):
+    if var['zip_fips'].loc[var['zip_fips']['ZIP'] == zip].size == 0:
+        return 0
+    return int(var['zip_fips'].loc[var['zip_fips']['ZIP'] == zip].iloc[0]['COUNTY'])
+
+

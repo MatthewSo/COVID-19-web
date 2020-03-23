@@ -61,7 +61,28 @@ def potential_outcomes_multiple():
         plotly.offline.plot(fig, filename='templates/dynamicTemplates/projections/5%/' + str(i) +".html", auto_open=False)
     return True
 
-potential_outcomes_multiple()
+def potential_outcomes_timeseries_by_fips():
+    df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
+    fips = df.fips.unique()
+    for fip in fips:
+        df_temp = df.loc[df['fips'] == fip]
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+                x=df_temp['Date'],
+                y=df_temp['total_median'],
+                name=fip,
+                line_color='dimgray',
+                opacity=0.8))
+        fig.update_layout(
+        title_text='COVID-19 5% Mobility Projection: ' + df_temp.iloc[0]['county'],
+            #coloraxis = {'colorscale':'reds'},
+            annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
+        ) 
+        plotly.offline.plot(fig, filename='templates/dynamicTemplates/projectionsZIP/5%/' + str(fip) +".html", auto_open=False)
+    return True
+        
+
+print(potential_outcomes_timeseries_by_fips())
 
 def forecast_14_day_multiple():
         response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 

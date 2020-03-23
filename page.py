@@ -37,13 +37,13 @@ var = {
     'csse_us_confirmed':0,
     'mailman_14_day_undoc_total':0,
     'mailman_14_day_doc_total':0,
-    'mailman_14_day_date':"04-02-2020"
+    'mailman_14_day_date':"04-02-2020",
+    'zips_fips':[]
 }
 
 
 dataControlLib.update_data(var)
 #assetGenLib.update_assets(var)
-#assetGenLib.potential_outcomes()
 
 
 @app.route("/c0pXalg2YTPY1QaN")
@@ -113,6 +113,10 @@ def delete_post_return():
 @app.route("/projections")
 def projections():
     return render_template("dynamicTemplates/projections.html")
+    
+@app.route("/projectionsZIP")
+def projectionsZIP():
+    return render_template("dynamicTemplates/projectionsZIP.html")
 
 @app.route("/day<int:n>")
 def day_n(n):
@@ -122,6 +126,11 @@ def day_n(n):
 def projection_n(n):
     return render_template("dynamicTemplates/projections/5%/" + str(n) +".html")
 
+@app.route("/projectionZip<int:n>")
+def projectionZip_n(n):
+    if str(dataControlLib.fips_finder(var,n)) == "0":
+        return("NOT A VALID VALUE. PLEASE TRY AGAIN.")
+    return render_template("dynamicTemplates/projectionsZip/5%/" + str(dataControlLib.fips_finder(var,n)) +".html")
 
 
 
