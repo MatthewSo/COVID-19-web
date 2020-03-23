@@ -76,6 +76,10 @@ def videoselection():
 def counters():
     return render_template(projectVariables.counters_html_file)
 
+@app.route(projectVariables.references_directory)
+def references():
+    return render_template(projectVariables.references_html_file)
+
 @app.route(projectVariables.addpost_directory)
 def addpost():
     return render_template(projectVariables.addpost_html_file)
