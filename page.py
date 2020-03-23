@@ -113,10 +113,10 @@ def delete_post_return():
 @app.route("/projections")
 def projections():
     return render_template("dynamicTemplates/projections.html")
-    
-@app.route("/projectionsZIP")
-def projectionsZIP():
-    return render_template("dynamicTemplates/projectionsZIP.html")
+
+@app.route("/projectionsZIP<int:n>")
+def projectionsZIP(n):
+    return render_template("dynamicTemplates/projectionsZIP.html",projection_load="/projectionZip" + str(n))
 
 @app.route("/day<int:n>")
 def day_n(n):

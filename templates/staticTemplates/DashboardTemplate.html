@@ -9,6 +9,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script>
+  function updateZIP(sel){
+    document.getElementById("projectionsZIP").src =  "/projectionsZIP" + document.getElementById("ZIP").value;
+  }
+
+  function resizeIframe(obj) {
+      const div = document.getElementById("scenario-container")
+      // Set Parent Iframe equal to div height - padding
+      parent.document.getElementById("adjustable-iframe").height = div.clientHeight - 5
+  }
+
+
+</script>
+
 <style>
 .iframe-container {
   overflow: hidden;
@@ -27,9 +41,9 @@
 
 }
 .iframe-content {
-    border: 2px solid #0f7699;
-    border-radius: 20px;
-    margin: 20px;
+    border: 4px solid #0f7699;
+    border-radius: 15px;
+    margin: 0.5%;
 }
 
 </style>
@@ -37,19 +51,34 @@
 <head>
 </head>
 <body>
-  <div class="container">
+  <div class="container" style="background: #8cb7ce; width:100%;">
+    <div class="row">
+      <div class="col-md-12 forecast">
+        <div class="scenario-selection">
+          <div class="scenario-selection-container" style ="width: 20%">
+            <input id="ZIP" type="text" name="Enter Zip Code" style ="width: 100%" placeholder = "Enter ZIP Code">
+            <button onclick="updateZIP()">Find</button>
+          </div>
+      </div>
+    </div>
+  </div>
     <div class="row">
       <div class="col-md-8 forecast">
-        <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/14dayforecast" width ="100%" height="550px"></iframe>
+        <iframe class="iframe-content" id="14day"  scrolling="no" seamless="seamless" src="/14dayforecast" width ="100%" height="550px"></iframe>
       </div>
       <div class="col-md-4 counters">
-        <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/counters" width ="100%" height="500px"></iframe>
+        <iframe class="iframe-content" id="counters"  scrolling="no" seamless="seamless" src="/counters" width ="100%" height="550px"></iframe>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 videoselection">
-        <iframe id="adjustable-iframe" class="iframe-content" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>
+      <div class="col-md-6 projections">
+       <!---- <iframe id="adjustable-iframe" class="projections" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>-->
+       <iframe class="iframe-content" id="projections"  scrolling="no" seamless="seamless" src="/projections" width ="100%" height="550px"></iframe>
       </div>
+      <div class="col-md-6 projectionsZIP">
+        <!---- <iframe id="adjustable-iframe" class="projections" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>-->
+        <iframe class="iframe-content" id="projectionsZIP"  scrolling="no" seamless="seamless" src="/projectionsZIP10027" width ="100%" height="550px"></iframe>
+       </div>
     </div>
   </div>
 

@@ -63,14 +63,8 @@
 </head>
 <body onload="resizeIframe(this)" onresize="resizeIframe(this)">
     <div id="scenario-container" class="scenario-container">
-        <div class="scenario-selection">
-        <div class="scenario-selection-container" style ="width: 20%">
-            <input id="ZIP" type="text" name="Enter Zip Code" style ="width: 100%" placeholder = "Enter ZIP Code">
-        </div>  
-        <button onclick="updateProjectionZIP()">Find</button>
-        </div>
   <article id="projectionArticle">
-    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/projectionZip10027" width ="100%" height="500px"></iframe>
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src={{projection_load}} width ="100%" height="500px"></iframe>
   </article>
   </div>
 
