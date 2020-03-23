@@ -22,12 +22,9 @@ import projectVariables
 import string
 import random
 
-#VAR
+#USER
 blog_user="miso"
 blog_pass='-905124903459320104'
-
-
-
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -45,15 +42,14 @@ var = {
 
 
 dataControlLib.update_data(var)
-# assetGenLib.update_assets(var)
-
+#assetGenLib.update_assets(var)
+assetGenLib.potential_outcomes()
 
 
 @app.route("/c0pXalg2YTPY1QaN")
 def forceUpdate():
     dataControlLib.update_data(var)
     assetGenLib.update_assets(var)
-
 
 @app.route(projectVariables.updates_directory)
 @app.route("/")
@@ -70,15 +66,15 @@ def dashboard():
 
 @app.route(projectVariables.fourteen_day_forecast_directory)
 def forecase():
-    return render_template("dynamicTemplates/14dayforecast.html")
+    return render_template(projectVariables.fourteen_day_forecast_html_file)
 
 @app.route(projectVariables.videoselection_directory)
 def videoselection():
-    return render_template("dynamicTemplates/videoselection.html")
+    return render_template(projectVariables.videoselection_html_file)
 
 @app.route(projectVariables.counters_directory)
 def counters():
-    return render_template("dynamicTemplates/counters.html")
+    return render_template(projectVariables.counters_html_file)
 
 @app.route(projectVariables.references_directory)
 def references():
@@ -113,6 +109,15 @@ def delete_post_return():
         blogLib.delete_blog_post(title)
     assetGenLib.generate_UpdatesTemplate()
     return title
+
+@app.route("/day<int:n>")
+def day_n(n):
+    return render_template("dynamicTemplates/14dayforecasts/Day" + str(n) +".html")
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
