@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html  >
+
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/static/updateAssets/tether/tether.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
+  <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+      function updateProjectionZIP(sel){
+        document.getElementById("igraph").src =  "/projectionZip" + document.getElementById("ZIP").value;
+      }
+
+      function resizeIframe(obj) {
+          const div = document.getElementById("scenario-container")
+          // Set Parent Iframe equal to div height - padding
+          parent.document.getElementById("adjustable-iframe").height = div.clientHeight - 5
+      }
+
+    
+  </script>
+
+
+<style>
+    .scenario-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scenario-selection-container {
+        border-radius: 3px;
+        background-color: white;
+        border: 1px solid black;
+    }
+    
+    .scenario-selection {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #0f7699;
+    }
+
+    #projectionVideo {
+        width: 100%;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    #projectionArticle {
+        width: 100%;
+    }
+
+</style> 
+
+<head >
+</head>
+<body onload="resizeIframe(this)" onresize="resizeIframe(this)">
+    <div id="scenario-container" class="scenario-container">
+        <div class="scenario-selection">
+        <div class="scenario-selection-container" style ="width: 20%">
+            <input id="ZIP" type="text" name="Enter Zip Code" style ="width: 100%" placeholder = "Enter ZIP Code">
+        </div>  
+        <button onclick="updateProjectionZIP()">Find</button>
+        </div>
+  <article id="projectionArticle">
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/projectionZip10027" width ="100%" height="500px"></iframe>
+  </article>
+  </div>
+
+</body>
