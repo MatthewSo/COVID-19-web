@@ -13,8 +13,8 @@
   
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
-      function videoChange(sel){
-          document.getElementById("forecast_frame").src =  sel.options[sel.selectedIndex].value;
+      function fourteenDayChange(sel){
+          document.getElementById("igraph").src =  "/day" + sel.value;
       }
 
       function resizeIframe(obj) {
@@ -59,20 +59,15 @@
 <head >
 </head>
 <body onload="resizeIframe(this)" onresize="resizeIframe(this)">
-  <div id="scenario-container" class="scenario-container">
-  <h2 class="align-center pb-3 mbr-fonts-style display-2">Scenario Simulations</h2>
-  <h3 class="align-center pb-3 mbr-fonts-style display-2">Projection:</h3>
-  <div class="scenario-selection">
-  <div class="scenario-selection-container">
-    <select id="videos" onchange="videoChange(this)">
-        <option value="/day1">No Intervention</option>
-        <option value="/day1.html">5% Mobility</option>
-        <option value="50%transmissibility.mp4">50% Transmissibility</option>
-        <option value="75%transmissibility.mp4">75% Transmissibility</option>
-    </select>
-  </div>  
-  </div>
+
   <article id="projectionArticle">
-    <iframe id="forecast_frame" src="/day1">
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/day1" width ="100%" height="500px"></iframe>
   </article>
   </div>
+  <div id="scenario-container" class="scenario-container">
+    <div class="scenario-selection">
+    <div class="scenario-selection-container" style ="width: 40%">
+      <input type="range" id="day" name="Day" step="1" value = "1" min="1" max="14" onchange="fourteenDayChange(this)" style ="width: 100%">
+    </div>  
+    </div>
+</body>

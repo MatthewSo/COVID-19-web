@@ -18,7 +18,7 @@ def state_time_series():
     print("hello")
 
 def forecast_14_day_multiple():
-        response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+        response = urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
         counties = json.load(response)
         df = pd.read_csv("county_undoc.csv",  dtype={"FIPS": str})
         max = 0.0   
@@ -27,9 +27,10 @@ def forecast_14_day_multiple():
             if (column[0:3] == "Day"):
                 if df[column].max() > max:
                     max = df[column].max().astype(float)
-
+        i = 0
         for column in df.columns:
             if (column[0:3] == "Day"):
+                i = i + 1
                 fig = go.Figure()
                 print(column)
                 fig.add_trace(go.Choropleth(
@@ -41,7 +42,7 @@ def forecast_14_day_multiple():
                     text=df['County'],
                     hoverinfo="text+z",
                     z=df[column].astype(float),
-                    zsrc="Data from Jeffery Shaman at Columbia University Mailman School of Public Health",
+                    zsrc="Data from CPID at Columbia University Mailman School of Public Health",
                     geojson = counties,
                     colorscale='jet',
                     marker_line_width=0, # line markers between states
@@ -50,7 +51,7 @@ def forecast_14_day_multiple():
             )
                 fig.data[0].update( zauto = False,zmax=max, zmin = 0)
                 fig.update_layout(
-            title_text='COVID-19 14 Day Projection',
+            title_text='COVID-19 14 Day ' +str(i)+ ' Projection',
             #coloraxis = {'colorscale':'reds'},
             geo = dict(
                 scope='usa',
@@ -254,6 +255,6 @@ def generate_UpdatesTemplate():
     text_file.close()
 
 def update_assets(var):
-    forecast_14_day()
+    forecast_14_day_multiple()
     write_counter(var)
     generate_UpdatesTemplate()
