@@ -16,7 +16,7 @@ from datetime import date
 import blogLib
 
 import dataControlLib
-
+import assetGenLib
 import projectVariables
 
 import string
@@ -33,7 +33,7 @@ var = {
     'csse_total_deaths':0,
     'csse_total_recovered':0,
     'csse_updated':"0",
-    'csse_daily_reports_df':[],
+    'csse_daily_reports_df':"",
     'csse_us_confirmed':0,
     'mailman_14_day_undoc_total':0,
     'mailman_14_day_doc_total':0,
@@ -43,6 +43,9 @@ var = {
 
 
 dataControlLib.update_data(var)
+print("HI)")
+print(var['zips_fips'])
+assetGenLib.counter(var)
 #assetGenLib.update_assets(var)
 
 
@@ -72,9 +75,6 @@ def forecase():
 def videoselection():
     return render_template(projectVariables.videoselection_html_file)
 
-@app.route(projectVariables.counters_directory)
-def counters():
-    return render_template(projectVariables.counters_html_file)
 
 @app.route(projectVariables.references_directory)
 def references():
@@ -118,6 +118,11 @@ def projections():
 def projectionsZIP(n):
     return render_template("dynamicTemplates/projectionsZIP.html",projection_load="/covid19/projectionZip" + str(n))
 
+@app.route('/counters<int:n>')
+def counters(n):
+    return render_template("dynamicTemplates/counters.html",projection_load="/covid19/counter" + str(n))
+
+
 @app.route("/day<int:n>")
 def day_n(n):
     return render_template("dynamicTemplates/14dayforecasts/Day" + str(n) +".html")
@@ -132,6 +137,11 @@ def projectionZip_n(n):
         return("NOT A VALID VALUE. PLEASE TRY AGAIN.")
     return render_template("dynamicTemplates/projectionsZIP/5%/" + str(dataControlLib.fips_finder(var,n)) +".html")
 
+@app.route("/counter<int:n>")
+def counter(n):
+    if str(dataControlLib.fips_finder(var,n)) == "0":
+        return("NOT A VALID VALUE. PLEASE TRY AGAIN.")
+    return render_template("dynamicTemplates/counters/" + str(dataControlLib.fips_finder(var,n)) +".html")
 
 
 if __name__ == '__main__':

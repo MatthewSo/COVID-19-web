@@ -50,11 +50,12 @@ def update_data(var):
     zip_fips_data(var)
 
 def zip_fips_data(var):
-    var['zip_fips'] =  pd.read_csv("ZIP_FIPS.csv")
+
+    var['zips_fips'] =  pd.read_csv("ZIP_FIPS.csv")[['ZIP','COUNTY']].copy()
 
 def fips_finder(var,zip):
-    if var['zip_fips'].loc[var['zip_fips']['ZIP'] == zip].size == 0:
+    if var['zips_fips'].loc[var['zips_fips']['ZIP'] == zip].size == 0:
         return 0
-    return int(var['zip_fips'].loc[var['zip_fips']['ZIP'] == zip].iloc[0]['COUNTY'])
+    return int(var['zips_fips'].loc[var['zips_fips']['ZIP'] == zip].iloc[0]['COUNTY'])
 
 

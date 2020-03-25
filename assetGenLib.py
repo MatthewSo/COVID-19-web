@@ -5,6 +5,7 @@ import numpy as np
 import plotly.express as px
 import json
 import urllib
+import math
 
 import plotly.io as pio
 import git
@@ -80,9 +81,6 @@ def potential_outcomes_timeseries_by_fips():
         ) 
         plotly.offline.plot(fig, filename='templates/dynamicTemplates/projectionsZIP/5%/' + str(fip) +".html", auto_open=False)
     return True
-        
-
-print(potential_outcomes_timeseries_by_fips())
 
 def forecast_14_day_multiple():
         response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
@@ -190,6 +188,76 @@ def forecast_14_day():
         ) 
         pio.write_html(fig, file='templates/14dayforecast.html', auto_open=False)
         return fig
+
+def counter(var):
+
+    #join_df = pd.merge(var['csse_daily_reports_df'],var['zips_fips'],left_on='FIPS',right_on='COUNTY')
+    FIPS = var['csse_daily_reports_df'].FIPS.unique()
+    for county in FIPS:
+        if not math.isnan(county):
+            county = int(county)
+            print (county)
+        
+            df_temp = var['csse_daily_reports_df'].loc[var['csse_daily_reports_df']['FIPS'] == county]
+            string = """
+    <!DOCTYPE html> <html>
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/dropdown/css/style.css">
+  <link rel="stylesheet" href="/static/updateAssets/tether/tether.min.css">
+  <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
+  <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">
+
+    <style> 
+    .red {
+        color: red;
+    }
+    .green {
+        color: green;
+    }
+    .big {
+        width: 100%;
+        text-align: center;
+    }
+    .counter-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    </style>
+    <body>  
+    <div class="counter-container">
+        <h2>Confirmed Cases:</h2>
+        <h2 class="red">"""+str(var["csse_total_confirmed"])+"""</h2>
+        </br>
+        <h2>Confirmed US Cases:</h2>
+        <h2 class="red">"""+str(var["csse_us_confirmed"])+"""</h2>
+        </br>
+        <h3 class="big">Confirmed Cases for """ + str(df_temp.iloc[0]["Combined_Key"]) + """:</h3>
+        <h2>
+            <span class="red">"""+str(df_temp.iloc[0]["Confirmed"])+"""</span>
+        </h2>
+        <h3 class="big">Confirmed Deaths for """ + str(df_temp.iloc[0]["Combined_Key"]) + """:</h3>
+        <h2>
+            <span class="red">"""+str(df_temp.iloc[0]["Deaths"])+"""</span>
+        </h2>
+        <h3 class="big">Confirmed Recoveries for """ + str(df_temp.iloc[0]["Combined_Key"]) + """:</h3>
+        <h2>
+            <span class="red">"""+str(df_temp.iloc[0]["Recovered"])+"""</span>
+        </h2>
+        <h5>Last Updated on """+ str(var["csse_updated"]) +"""</h5>
+    </div>
+    </body>
+    </html>
+    """
+            text_file = open("templates/dynamicTemplates/counters/" + str(county) + ".html", "w+")
+            text_file.write(string)
+            text_file.close()
 
 def write_counter(var):
     string = """

@@ -1,5 +1,6 @@
+<!DOCTYPE html>
+<html  >
 
-<!DOCTYPE html> <html>
   <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="/static/updateAssets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="/static/updateAssets/bootstrap/css/bootstrap.min.css">
@@ -9,41 +10,62 @@
   <link rel="stylesheet" href="/static/updateAssets/tether/tether.min.css">
   <link rel="stylesheet" href="/static/updateAssets/theme/css/style.css">
   <link rel="preload" as="style" href="/static/updateAssets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="/static/updateAssets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+      function updateProjectionZIP(sel){
+        document.getElementById("igraph").src =  "/covid19/projectionZip" + document.getElementById("ZIP").value;
+      }
 
-<style> 
-    .red {
-        color: red;
-    }
-    .green {
-        color: green;
-    }
-    .big {
-        width: 100%;
-        text-align: center;
-    }
-    .counter-container {
+      function resizeIframe(obj) {
+          const div = document.getElementById("scenario-container")
+          // Set Parent Iframe equal to div height - padding
+          parent.document.getElementById("adjustable-iframe").height = div.clientHeight - 5
+      }
+
+    
+  </script>
+
+
+<style>
+    .scenario-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        height: 100vh;
     }
-</style>
-<body>  
-    <div class="counter-container">
-        <h2>Confirmed Cases:</h2>
-        <h2 class="red">304528</h2>
-        </br>
-        <h2>Confirmed US Cases:</h2>
-        <h2 class="red">25493</h2>
-        <h5>Last Updated on 03-20-2020</h5>
-        </br>
-        <h3 class="big">14 Day Predicted US Cases:</h3>
-        <h2>
-            <span class="red">508</span>
-        by 
-            <span class="green">04-02-2020</span>
-        </h2>
-    </div>
+
+    .scenario-selection-container {
+        border-radius: 3px;
+        background-color: white;
+        border: 1px solid black;
+    }
+    
+    .scenario-selection {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #0f7699;
+    }
+
+    #projectionVideo {
+        width: 100%;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    #projectionArticle {
+        width: 100%;
+    }
+
+</style> 
+
+<head >
+</head>
+<body onload="resizeIframe(this)" onresize="resizeIframe(this)">
+    <div id="scenario-container" class="scenario-container">
+  <article id="projectionArticle">
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src={{projection_load}} width ="100%" height="500px"></iframe>
+  </article>
+  </div>
+
 </body>
-</html>
