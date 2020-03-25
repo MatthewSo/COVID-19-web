@@ -130,7 +130,7 @@ def projection_n(n):
 def projectionZip_n(n):
     if str(dataControlLib.fips_finder(var,n)) == "0":
         return("NOT A VALID VALUE. PLEASE TRY AGAIN.")
-    return render_template("dynamicTemplates/projectionsZip/5%/" + str(dataControlLib.fips_finder(var,n)) +".html")
+    return render_template("dynamicTemplates/projectionsZIP/5%/" + str(dataControlLib.fips_finder(var,n)) +".html")
 
 
 

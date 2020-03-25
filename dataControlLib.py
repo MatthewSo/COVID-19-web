@@ -34,7 +34,7 @@ def update_csse_data(var):
     var['csse_total_recovered'] = csse_daily_reports_df['Recovered'].sum()
     var['csse_updated'] =  csse_daily_report_latest_date
     var['csse_daily_reports_df'] = csse_daily_reports_df
-    var['csse_us_confirmed'] = csse_daily_reports_df.loc[csse_daily_reports_df['Country/Region'] == 'US', 'Confirmed'].sum()
+    var['csse_us_confirmed'] = csse_daily_reports_df.loc[csse_daily_reports_df['Country_Region'] == 'US', 'Confirmed'].sum()
     print (var['csse_us_confirmed'])
 
 def update_prediction_data(var):
