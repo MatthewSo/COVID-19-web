@@ -45,7 +45,7 @@ var = {
 dataControlLib.update_data(var)
 print("HI)")
 print(var['zips_fips'])
-assetGenLib.counter(var)
+
 #assetGenLib.update_assets(var)
 
 
