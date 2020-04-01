@@ -477,4 +477,4 @@ def update_assets(var):
     #write_counter(var)
     generate_UpdatesTemplate()
 
-generate_UpdatesTemplate()
+#generate_UpdatesTemplate()
