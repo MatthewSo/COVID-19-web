@@ -13,6 +13,7 @@
   function updateZIP(sel){
     document.getElementById("projectionsZIP").src =  "/covid19/projectionsZIP" + document.getElementById("ZIP").value;
     document.getElementById("counters").src =  "/covid19/counter" + document.getElementById("ZIP").value;
+    document.getElementById("stateprojection5").src =  "/covid19/stateprojection" + document.getElementById("ZIP").value + "+5";
   }
 
   function resizeIframe(obj) {
@@ -72,13 +73,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 projections">
+      <div class="col-md-4 projections">
        <!---- <iframe id="adjustable-iframe" class="projections" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>-->
-       <iframe class="iframe-content" id="projections"  scrolling="no" seamless="seamless" src="/covid19/projections" width ="100%" height="550px"></iframe>
+       <iframe class="iframe-content" id="stateprojection5"  scrolling="no" seamless="seamless" src="/covid19/stateprojection10027+5" width ="100%" height="550px"></iframe>
       </div>
-      <div class="col-md-6 projectionsZIP">
+      <div class="col-md-4 projectionsZIP">
         <!---- <iframe id="adjustable-iframe" class="projections" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>-->
-        <iframe class="iframe-content" id="projectionsZIP"  scrolling="no" seamless="seamless" src="/covid19/projectionsZIP10027" width ="100%" height="550px"></iframe>
+        <iframe class="iframe-content" id="stateprojection5"  scrolling="no" seamless="seamless" src="/covid19/stateprojection10027+5" width ="100%" height="550px"></iframe>
+       </div>
+       <div class="col-md-4 projectionsZIP">
+        <!---- <iframe id="adjustable-iframe" class="projections" scrolling="no" seamless="seamless" src="/videoselection" width="100%"></iframe>-->
+        <iframe class="iframe-content" id="stateprojection5"  scrolling="no" seamless="seamless" src="/covid19/stateprojection10027+5" width ="100%" height="550px"></iframe>
        </div>
     </div>
   </div>

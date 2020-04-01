@@ -38,7 +38,8 @@ var = {
     'mailman_14_day_undoc_total':0,
     'mailman_14_day_doc_total':0,
     'mailman_14_day_date':"04-02-2020",
-    'zips_fips':[]
+    'zips_fips':[],
+    'zips_states':[]
 }
 
 
@@ -118,11 +119,6 @@ def projections():
 def projectionsZIP(n):
     return render_template("dynamicTemplates/projectionsZIP.html",projection_load="/covid19/projectionZip" + str(n))
 
-@app.route('/counters<int:n>')
-def counters(n):
-    return render_template("dynamicTemplates/counters.html",projection_load="/covid19/counter" + str(n))
-
-
 @app.route("/day<int:n>")
 def day_n(n):
     return render_template("dynamicTemplates/14dayforecasts/Day" + str(n) +".html")
@@ -130,6 +126,11 @@ def day_n(n):
 @app.route("/projection<int:n>")
 def projection_n(n):
     return render_template("dynamicTemplates/projections/5%/" + str(n) +".html")
+
+@app.route("/stateprojection<int:n>+<int:m>")
+def stateprojection_n(n,m):
+    temp = dataControlLib.state_finder(var,n)
+    return render_template("dynamicTemplates/state-projections/"+ str(m) + "%/" + temp +".html")
 
 @app.route("/projectionZip<int:n>")
 def projectionZip_n(n):

@@ -48,14 +48,21 @@ def update_data(var):
     update_csse_data(var)
     update_prediction_data(var)
     zip_fips_data(var)
+    zip_state_data(var)
 
 def zip_fips_data(var):
-
     var['zips_fips'] =  pd.read_csv("ZIP_FIPS.csv")[['ZIP','COUNTY']].copy()
+
+def zip_state_data(var):
+    var['zips_states'] = pd.read_csv("ZIP_STATE.csv")[['zip','state']].copy()
+
 
 def fips_finder(var,zip):
     if var['zips_fips'].loc[var['zips_fips']['ZIP'] == zip].size == 0:
         return 0
     return int(var['zips_fips'].loc[var['zips_fips']['ZIP'] == zip].iloc[0]['COUNTY'])
+
+def state_finder(var,zip):
+    return var['zips_states'].loc[var['zips_states']['zip'] == zip].iloc[0]['state']
 
 

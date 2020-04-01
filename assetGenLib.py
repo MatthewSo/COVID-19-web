@@ -62,6 +62,90 @@ def potential_outcomes_multiple():
         plotly.offline.plot(fig, filename='templates/dynamicTemplates/projections/5%/' + str(i) +".html", auto_open=False)
     return True
 
+def state_line_plot_projection():
+    response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+    counties = json.load(response)
+    df = pd.read_csv("stateProjections5%mobility.csv",  dtype={"fips": str})
+    for state in df.STATE.unique():
+        print(state)
+        df_temp = df.loc[df['STATE'] == state]
+        if (df_temp.size > 0):    
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                    x=df_temp.Date.unique(),
+                    y = df_temp.groupby('Date')['total_2.5'].sum(),
+                    name="2.5%",
+                    line_color='rgba(58, 108, 218, 1)',
+                    opacity=0.8))
+            fig.add_trace(go.Scatter(
+                    x=df_temp.Date.unique(),
+                    y = df_temp.groupby('Date')['total_25'].sum(),
+                    name="25%",
+                    line_color='rgba(58, 168, 218, .8)',
+                    opacity=0.8, fill='tonexty', fillcolor ='rgba(58, 108, 218, 0.8)'))
+            fig.add_trace(go.Scatter(
+                    x=df_temp.Date.unique(),
+                    y = df_temp.groupby('Date')['total_median'].sum(),
+                    name="Median",
+                    line_color='rgba(31, 59, 215, 1)',
+                    opacity=0.8, fill='tonexty', fillcolor ='rgba(58, 168, 218, .8)'))
+            fig.add_trace(go.Scatter(
+                    x=df_temp.Date.unique(),
+                    y = df_temp.groupby('Date')['total_75'].sum(),
+                    name="75%",
+                    line_color='rgba(58, 168, 218, .8)',
+                    opacity=0.8, fill='tonexty',fillcolor ='rgba(58, 168, 218, .8)'))
+            fig.add_trace(go.Scatter(
+                    x=df_temp.Date.unique(),
+                    y = df_temp.groupby('Date')['total_97.5'].sum(),
+                    name="97.5%",
+                    line_color='rgba(58, 108, 218, 1)',
+                    opacity=0.8, fill='tonexty', fillcolor ='rgba(58, 108, 218, 0.8)'))
+            fig.update_layout(
+            title_text='COVID-19 5% Mobility Projection: ' + state,
+                #coloraxis = {'colorscale':'reds'},
+                annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
+        ) 
+            plotly.offline.plot(fig, filename='templates/dynamicTemplates/state-projections/5%/' + state +".html", auto_open=False)
+    return True    
+       
+
+
+def state_projetion():
+    response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
+    counties = json.load(response)
+    df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
+    states = []
+    zip_fips =  pd.read_csv("ZIP_FIPS.csv")[['ZIP','COUNTY']].copy()
+    zip_state = pd.read_csv("ZIP_STATE.csv")[['zip','state']].copy()
+    fips_state = pd.merge(zip_fips, zip_state, how = 'inner', left_on='ZIP',right_on='zip')
+    print(fips_state)
+    for fip in df['fips']:
+            if fips_state.loc[fips_state['COUNTY'] == int(fip)].size == 0:
+                states.append("N/A")
+                print(fip)
+            else:
+                states.append(fips_state.loc[fips_state['COUNTY'] == int(fip)].iloc[0]['state'])
+    print("here")
+    df['STATE'] = states
+    for state in df.STATE.unique():
+        print(state)
+    df.to_csv('stateProjections5%mobility.csv', index=False)
+
+        #fig.data[0].update( zauto = False,zmax=max, zmin = 0)
+        #fig.update_layout(
+        #title_text='COVID-19 5% Mobility Projection: ' + date,
+            #coloraxis = {'colorscale':'reds'},
+         #   geo = dict(
+         #       scope='usa',
+          #      showlakes=True, # lakes
+           #     lakecolor='rgb(255, 255, 255)'),
+           # annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
+        #) 
+        #plotly.offline.plot(fig, filename='templates/dynamicTemplates/state-projections/5%/' + str(i) +".html", auto_open=False)
+    return True
+
+
 def potential_outcomes_timeseries_by_fips():
     df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
     fips = df.fips.unique()
@@ -384,11 +468,13 @@ def generate_UpdatesTemplate():
     </section>'''
 
     page=page+'''{% endblock %}'''
-    text_file = open("templates/UpdatesTemplate.html", "w+")
+    text_file = open("templates/staticTemplates/UpdatesTemplate.html", "w+")
     text_file.write(page)
     text_file.close()
 
 def update_assets(var):
-    forecast_14_day_multiple()
-    write_counter(var)
+    #forecast_14_day_multiple()
+    #write_counter(var)
     generate_UpdatesTemplate()
+
+generate_UpdatesTemplate()
