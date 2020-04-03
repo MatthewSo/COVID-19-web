@@ -24,7 +24,7 @@ def potential_outcomes_multiple():
     response = urllib.urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') 
     counties = json.load(response)
     df = pd.read_csv("Projection_5%mobility.csv",  dtype={"fips": str})
-    max = np.log10(df['total_97.5']).max()
+    max = np.log10(df['total_median']).max()
     dates = df.Date.unique()
     i = 0
     for date in dates:
@@ -59,7 +59,8 @@ def potential_outcomes_multiple():
                 lakecolor='rgb(255, 255, 255)'),
             annotations=[dict(xref='paper', yref='paper',x=0.5, y=1.1,showarrow=False, text ='Data provided by CPID from the Columbia University Mailman School of Public Health')]
         ) 
-        plotly.offline.plot(fig, filename='templates/dynamicTemplates/projections/5%/' + str(i) +".html", auto_open=False)
+        fig.write_image('templates/dynamicTemplates/projections/5%/' + str(i) +".png")
+        #plotly.offline.plot(fig, filename='templates/dynamicTemplates/projections/5%/' + str(i) +".html", auto_open=False)
     return True
 
 def state_line_plot_projection():
@@ -478,3 +479,5 @@ def update_assets(var):
     generate_UpdatesTemplate()
 
 #generate_UpdatesTemplate()
+
+#potential_outcomes_multiple()

@@ -14,7 +14,7 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
       function projectionChange(sel){
-          document.getElementById("igraph").src =  "/covid19/projection" + sel.value;
+          document.getElementById("igraph").src =  "static/projections/5%/" + sel.value + ".png";
       }
 
       function resizeIframe(obj) {
@@ -61,7 +61,7 @@
 <body onload="resizeIframe(this)" onresize="resizeIframe(this)">
 
   <article id="projectionArticle">
-    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="/covid19/projection1" width ="100%" height="500px"></iframe>
+    <iframe class="iframe-content" id="igraph"  scrolling="no" seamless="seamless" src="static/projections/5%/1.png" width ="100%" height="500px"></iframe>
   </article>
   </div>
   <div id="scenario-container" class="scenario-container">
